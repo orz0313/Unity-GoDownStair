@@ -1,0 +1,7 @@
+Warning: None triangle mesh: MTH_DEF (file: 'C:\Users\user\Desktop\Project\New\GoDownStair\Assets\YBot\Animation\JUMP01B.fbx') []
+Warning: Mesh 'MTH_DEF' with shape deformer not supported (file: 'C:\Users\user\Desktop\Project\New\GoDownStair\Assets\YBot\Animation\JUMP01B.fbx') []
+Warning: Mesh 'EYE_DEF' with shape deformer not supported (file: 'C:\Users\user\Desktop\Project\New\GoDownStair\Assets\YBot\Animation\JUMP01B.fbx') []
+Warning: None triangle mesh: EL_DEF (file: 'C:\Users\user\Desktop\Project\New\GoDownStair\Assets\YBot\Animation\JUMP01B.fbx') []
+Warning: Mesh 'EL_DEF' with shape deformer not supported (file: 'C:\Users\user\Desktop\Project\New\GoDownStair\Assets\YBot\Animation\JUMP01B.fbx') []
+Warning: None triangle mesh: BLW_DEF (file: 'C:\Users\user\Desktop\Project\New\GoDownStair\Assets\YBot\Animation\JUMP01B.fbx') []
+Warning: Mesh 'BLW_DEF' with shape deformer not supported (file: 'C:\Users\user\Desktop\Project\New\GoDownStair\Assets\YBot\Animation\JUMP01B.fbx') []
