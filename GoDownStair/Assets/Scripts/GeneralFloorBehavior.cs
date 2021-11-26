@@ -5,8 +5,10 @@ using UnityEngine;
 public class GeneralFloorBehavior : MonoBehaviour
 {
     public GameObject[] CubeTypeArray;
+    [SerializeField]AudioClip[] GeneralSounds;
     [SerializeField]int CurrentCubeType;
     public Vector3 SpeedOfCube = new Vector3(0,1,0);
+
     void Update()
     {
         transform.position += SpeedOfCube*Time.deltaTime;
@@ -52,6 +54,11 @@ public class GeneralFloorBehavior : MonoBehaviour
         CubeTypeArray[6].GetComponent<Renderer>().enabled = true;
     }
 
+    public void GeneralSoundPlay(Vector3 Position)
+    {
+        AudioSource.PlayClipAtPoint(GeneralSounds[CurrentCubeType],Position);
+    }
+
     //below is function structure
 
 
@@ -65,30 +72,37 @@ public class GeneralFloorBehavior : MonoBehaviour
     static void GeneralCubeFunction(PlayerBehavior Playerobj,GameObject Cubeobj)
     {
         Playerobj.ChangeHp(1);
+        Cubeobj.GetComponent<GeneralFloorBehavior>().GeneralSoundPlay(Cubeobj.transform.position);
     }
     static void RedCubeFunction(PlayerBehavior Playerobj,GameObject Cubeobj)
     {
         Playerobj.ChangeHp(-1);
+        Cubeobj.GetComponent<GeneralFloorBehavior>().GeneralSoundPlay(Cubeobj.transform.position);
     }
     static void OrengeCubeFunction(PlayerBehavior Playerobj,GameObject Cubeobj)
     {
         Playerobj.Burning();
+        Cubeobj.GetComponent<GeneralFloorBehavior>().GeneralSoundPlay(Cubeobj.transform.position);
     }    
     static void YellowCubeFunction(PlayerBehavior Playerobj,GameObject Cubeobj)
     {
         Playerobj.ChangeHp(1);
         Playerobj.Jump(new Vector3(0,5,0));
+        Cubeobj.GetComponent<GeneralFloorBehavior>().GeneralSoundPlay(Cubeobj.transform.position);
     }    
     static void GreenCubeFunction(PlayerBehavior Playerobj,GameObject Cubeobj)
     {
         Playerobj.ChangeHp(3);
+        Cubeobj.GetComponent<GeneralFloorBehavior>().GeneralSoundPlay(Cubeobj.transform.position);
     }
     static void BlueCubeFunction(PlayerBehavior Playerobj,GameObject Cubeobj)
     {
         Playerobj.Skidding();
+        Cubeobj.GetComponent<GeneralFloorBehavior>().GeneralSoundPlay(Cubeobj.transform.position);
     }
     static void PurpleCubeFunction(PlayerBehavior Playerobj,GameObject Cubeobj)
     {
-        Cubeobj.GetComponent<GeneralFloorBehavior>().VanishCube();        
+        Cubeobj.GetComponent<GeneralFloorBehavior>().VanishCube();      
+        Cubeobj.GetComponent<GeneralFloorBehavior>().GeneralSoundPlay(Cubeobj.transform.position);  
     }
 }
