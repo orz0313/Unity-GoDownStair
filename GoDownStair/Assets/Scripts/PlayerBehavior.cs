@@ -18,7 +18,7 @@ public class PlayerBehavior : MonoBehaviour
     float MoveSpeed = 2;
     Vector3 JumpForce = new Vector3 (0,7,0);
     Rigidbody rb;
-    RaycastHit hit;
+    float RayDistance;
     LayerMask cubeLayer;
     Animator animator;
     void Start()
@@ -27,12 +27,14 @@ public class PlayerBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cubeLayer = LayerMask.GetMask("Cube");
         animator = GetComponent<Animator>();
-
+        RayDistance = Mathf.Sqrt(0.0052f);
     }
     void Update()
     {
         float Horizontal = Input.GetAxis("Horizontal");
+
         transform.position += new Vector3(Horizontal*Time.deltaTime*MoveSpeed,0,0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x,-3.5f,4.3f),transform.position.y,0);
         if(Horizontal>0)
         {
             transform.rotation = Quaternion.Euler(0,90,0);
@@ -63,10 +65,20 @@ public class PlayerBehavior : MonoBehaviour
 
         UIText.text = "You are now at B" + ((int)(Time.time/5)).ToString() + " Floor";
     }
+    // void OnDrawGizmosSelected()
+    // {
+    //     Gizmos.color = Color.blue;
+    //     Gizmos.DrawLine(transform.position,transform.position-(transform.up*0.04f));
+    //     Gizmos.DrawLine(transform.position,transform.position+new Vector3(0.06f,-0.04f,0));
+    //     Gizmos.DrawLine(transform.position,transform.position+new Vector3(-0.06f,-0.04f,0));
+    // }
     
     private void OnCollisionEnter(Collision other) 
     {
-        if(other.gameObject.CompareTag("GeneralFloor")&&Physics.Raycast(transform.position,-transform.up,out hit,0.04f,cubeLayer))
+        if(other.gameObject.CompareTag("GeneralFloor")&&
+        (Physics.Raycast(transform.position,-transform.up,0.04f,cubeLayer)||
+         Physics.Raycast(transform.position,new Vector3(0.06f,-0.04f,0),RayDistance,cubeLayer)||
+         Physics.Raycast(transform.position,new Vector3(-0.06f,-0.04f,0),RayDistance,cubeLayer)))
         {
             GeneralFloorBehavior.CubeFunctionsArray
             [other.gameObject.GetComponent<GeneralFloorBehavior>().GetCurrnetCubeType()]
@@ -103,7 +115,9 @@ public class PlayerBehavior : MonoBehaviour
     }
     void OnGroundCheck()
     {
-        if(Physics.Raycast(transform.position,-transform.up,out hit,0.04f,cubeLayer))
+        if(Physics.Raycast(transform.position,-transform.up,0.04f,cubeLayer)||
+        Physics.Raycast(transform.position,new Vector3(0.06f,-0.04f,0),RayDistance,cubeLayer)||
+        Physics.Raycast(transform.position,new Vector3(-0.06f,-0.04f,0),RayDistance,cubeLayer))
         {
             OnGround = true;
             animator.SetBool("OnGround",true);

@@ -9477,6 +9477,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 768164247, guid: e2e5fb9d81846db4c95d9eb96c87789e, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 768164247, guid: e2e5fb9d81846db4c95d9eb96c87789e, type: 3}
+      propertyPath: m_Size.z
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 768164247, guid: e2e5fb9d81846db4c95d9eb96c87789e, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768164247, guid: e2e5fb9d81846db4c95d9eb96c87789e, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 768164251, guid: e2e5fb9d81846db4c95d9eb96c87789e, type: 3}
       propertyPath: UIText
       value: 
@@ -9507,7 +9523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8993389092235036540, guid: e2e5fb9d81846db4c95d9eb96c87789e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.05
+      value: 2.06
       objectReference: {fileID: 0}
     - target: {fileID: 8993389092235036540, guid: e2e5fb9d81846db4c95d9eb96c87789e, type: 3}
       propertyPath: m_LocalPosition.z
